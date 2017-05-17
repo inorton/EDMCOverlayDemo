@@ -49,10 +49,13 @@ def journal_entry(cmdr, system, station, entry, state):
     """
     if "event" in entry:
         if entry["event"] == "SendText":
+            global END
             if "!demo" in entry["Message"]:
                 notify("Hello {}, You are in {}, Have a nice day!".format(cmdr, system))
-
+                END = False
                 start_demo_thread()
+            if "!stop" in entry["Message"]:
+                END = True
 
     if cmdr:
         pass

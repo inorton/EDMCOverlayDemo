@@ -64,6 +64,7 @@ def journal_entry(cmdr, system, station, entry, state):
 DEMO = None
 END = False
 
+
 def start_demo_thread():
     """
     Start a thread that runs the demo
@@ -71,6 +72,7 @@ def start_demo_thread():
     """
     global DEMO
     DEMO = threading.Thread(target=demo_script)
+    DEMO.setDaemon(True)
     DEMO.start()
 
 
